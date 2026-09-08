@@ -1,32 +1,44 @@
 # Hill Cipher - 2x2
+a = int(input("Enter k11: "))
+b = int(input("Enter k12: "))
+c = int(input("Enter k21: "))
+d = int(input("Enter k22: "))
 
-key = [[3, 3],
-       [2, 5]]
+text = input("Enter plaintext: ").upper()
 
-# Modular inverse matrix for the above key modulo 26
-inverse = [[15, 17],
-           [20, 9]]
+if len(text) % 2 != 0:
+    text += "X"
 
-text = input("Enter 2-letter text: ").upper()
-text = "".join(ch for ch in text if 'A' <= ch <= 'Z')
+encrypted = ""
 
-if len(text) != 2:
-    print("Error: Enter exactly 2 letters.")
-else:
-    a = ord(text[0]) - ord('A')
-    b = ord(text[1]) - ord('A')
+for i in range(0, len(text), 2):
+    x = ord(text[i]) - 65
+    y = ord(text[i+1]) - 65
 
-    # Encryption
-    e1 = (key[0][0] * a + key[0][1] * b) % 26
-    e2 = (key[1][0] * a + key[1][1] * b) % 26
+    e1 = (a*x + b*y) % 26
+    e2 = (c*x + d*y) % 26
 
-    encrypted = chr(e1 + ord('A')) + chr(e2 + ord('A'))
+    encrypted += chr(e1 + 65) + chr(e2 + 65)
 
-    # Decryption
-    d1 = (inverse[0][0] * e1 + inverse[0][1] * e2) % 26
-    d2 = (inverse[1][0] * e1 + inverse[1][1] * e2) % 26
+print("Encrypted:", encrypted)
 
-    decrypted = chr(d1 + ord('A')) + chr(d2 + ord('A'))
+det = (a*d - b*c) % 26
+inv_det = pow(det, -1, 26)
 
-    print("Encrypted:", encrypted)
-    print("Decrypted:", decrypted)
+i11 = (d * inv_det) % 26
+i12 = (-b * inv_det) % 26
+i21 = (-c * inv_det) % 26
+i22 = (a * inv_det) % 26
+
+decrypted = ""
+
+for i in range(0, len(encrypted), 2):
+    x = ord(encrypted[i]) - 65
+    y = ord(encrypted[i+1]) - 65
+
+    d1 = (i11*x + i12*y) % 26
+    d2 = (i21*x + i22*y) % 26
+
+    decrypted += chr(d1 + 65) + chr(d2 + 65)
+
+print("Decrypted:", decrypted)

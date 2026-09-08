@@ -1,35 +1,22 @@
-# Vigenere Cipher
-
-text = input("Enter text: ").upper()
-key = input("Enter key: ").upper()
-
-# Keep only letters in the key
-key = "".join(ch for ch in key if 'A' <= ch <= 'Z')
-
-if not key:
-    print("Error: Key must contain at least one letter.")
-else:
-    encrypted = ""
-    key_index = 0
-
-    for ch in text:
-        if 'A' <= ch <= 'Z':
-            shift = ord(key[key_index % len(key)]) - ord('A')
-            encrypted += chr((ord(ch) - ord('A') + shift) % 26 + ord('A'))
-            key_index += 1
-        else:
-            encrypted += ch
-
-    decrypted = ""
-    key_index = 0
-
-    for ch in encrypted:
-        if 'A' <= ch <= 'Z':
-            shift = ord(key[key_index % len(key)]) - ord('A')
-            decrypted += chr((ord(ch) - ord('A') - shift) % 26 + ord('A'))
-            key_index += 1
-        else:
-            decrypted += ch
-
-    print("Encrypted:", encrypted)
-    print("Decrypted:", decrypted)
+pt=input("Enter plaintext: ").upper()
+key=input("Enter key: ").upper()
+ct=""
+j=0
+for c in pt:
+    if c.isalpha():
+        k=ord(key[j%len(key)])-65
+        ct+=chr((ord(c)-65+k)%26+65)
+        j+=1
+    else:
+        ct+=c
+print("Ciphertext:",ct)
+dt=""
+j=0
+for c in ct:
+    if c.isalpha():
+        k=ord(key[j%len(key)])-65
+        dt+=chr((ord(c)-65-k)%26+65)
+        j+=1
+    else:
+        dt+=c
+print("Decrypted:",dt)

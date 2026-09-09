@@ -1,44 +1,29 @@
-# Hill Cipher - 2x2
-a = int(input("Enter k11: "))
-b = int(input("Enter k12: "))
-c = int(input("Enter k21: "))
-d = int(input("Enter k22: "))
-
-text = input("Enter plaintext: ").upper()
-
-if len(text) % 2 != 0:
-    text += "X"
-
-encrypted = ""
-
-for i in range(0, len(text), 2):
-    x = ord(text[i]) - 65
-    y = ord(text[i+1]) - 65
-
-    e1 = (a*x + b*y) % 26
-    e2 = (c*x + d*y) % 26
-
-    encrypted += chr(e1 + 65) + chr(e2 + 65)
-
-print("Encrypted:", encrypted)
-
-det = (a*d - b*c) % 26
-inv_det = pow(det, -1, 26)
-
-i11 = (d * inv_det) % 26
-i12 = (-b * inv_det) % 26
-i21 = (-c * inv_det) % 26
-i22 = (a * inv_det) % 26
-
-decrypted = ""
-
-for i in range(0, len(encrypted), 2):
-    x = ord(encrypted[i]) - 65
-    y = ord(encrypted[i+1]) - 65
-
-    d1 = (i11*x + i12*y) % 26
-    d2 = (i21*x + i22*y) % 26
-
-    decrypted += chr(d1 + 65) + chr(d2 + 65)
-
-print("Decrypted:", decrypted)
+pt=input("Enter plaintext (even length): ").upper()
+a=int(input("Enter key a11: "))
+b=int(input("Enter key a12: "))
+c=int(input("Enter key a21: "))
+d=int(input("Enter key a22: "))
+if len(pt)%2!=0:
+    pt+="X"
+ct=""
+for i in range(0,len(pt),2):
+    x=ord(pt[i])-65
+    y=ord(pt[i+1])-65
+    p=(a*x+b*y)%26
+    q=(c*x+d*y)%26
+    ct+=chr(p+65)+chr(q+65)
+print("Ciphertext:",ct)
+det=(a*d-b*c)%26
+det_inv=pow(det,-1,26)
+ia=(d*det_inv)%26
+ib=(-b*det_inv)%26
+ic=(-c*det_inv)%26
+id_=(a*det_inv)%26
+dt=""
+for i in range(0,len(ct),2):
+    x=ord(ct[i])-65
+    y=ord(ct[i+1])-65
+    p=(ia*x+ib*y)%26
+    q=(ic*x+id_*y)%26
+    dt+=chr(p+65)+chr(q+65)
+print("Decrypted:",dt)

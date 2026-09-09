@@ -1,10 +1,6 @@
-# Caesar Cipher
-
 text = input("Enter text: ")
 shift = int(input("Enter shift: "))
-
 encrypted = ""
-
 for ch in text:
     if 'A' <= ch <= 'Z':
         encrypted += chr((ord(ch) - ord('A') + shift) % 26 + ord('A'))
@@ -12,9 +8,7 @@ for ch in text:
         encrypted += chr((ord(ch) - ord('a') + shift) % 26 + ord('a'))
     else:
         encrypted += ch
-
 decrypted = ""
-
 for ch in encrypted:
     if 'A' <= ch <= 'Z':
         decrypted += chr((ord(ch) - ord('A') - shift) % 26 + ord('A'))
@@ -22,6 +16,5 @@ for ch in encrypted:
         decrypted += chr((ord(ch) - ord('a') - shift) % 26 + ord('a'))
     else:
         decrypted += ch
-
 print("Encrypted:", encrypted)
 print("Decrypted:", decrypted)

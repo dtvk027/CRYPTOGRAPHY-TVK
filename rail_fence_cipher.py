@@ -1,4 +1,3 @@
-# Rail Fence Cipher - 2 Rails
 text = input("Enter text: ").replace(" ", "").upper()
 rail1 = ""
 rail2 = ""

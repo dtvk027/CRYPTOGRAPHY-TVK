@@ -1,24 +1,39 @@
-# Classical Cryptography Algorithms in Python
+# Cryptography Lab Programs
 
-## Programs
+## Assignments
 
+### Assignment 1: Number Theory
+1. Division Algorithm
+2. Euclidean Algorithm
+3. Modular Arithmetic
+
+### Assignment 2: Number Theory 2
+1. Euler's Totient Function
+2. Fermat's Little Theorem
+3. Primality Testing
+4. Multiplicative Inverse
+5. Chinese Remainder Theorem
+
+### Assignment 3: Substitution Techniques
 1. Caesar Cipher
 2. Monoalphabetic Cipher
 3. Vigenere Cipher
-4. Rail Fence Cipher
-5. Columnar Transposition Cipher
-6. Hill Cipher
-7. Playfair Cipher
 
-## Requirements
+### Assignment 4: Advanced Substitution Techniques
+1. Hill Cipher
+2. Playfair Cipher
 
-- Python 3
-- No external packages are required.
+### Assignment 5: Transposition Techniques
+1. Rail Fence Cipher
+2. Columnar Transposition Cipher
 
-## How to Run
+### Assignment 6: Block Ciphers
+1. DES
+2. AES
 
-Open a terminal in this folder and run, for example:
+### Assignment 8: RSA
+1. RSA Key Generation
+2. RSA Encryption and Decryption
 
-```bash
-python caesar_cipher.py
-```
+### Assignment 9: Diffie-Hellman Key Exchange
+1. Diffie-Hellman Key Exchange
